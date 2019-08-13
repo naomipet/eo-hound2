@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "gee-project-238412",
+  "private_key_id": "16ab0e8e82b46f772f3cbb204337decd63249165",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDVF5HJuJWf5nEz\nvJde9/iTo/jCDsM680Q2CPVXBkA5iMKGAGy1IwTVt3FvQjW2XyiYh1sPxs7E6BG/\nnf7kiF61FMUtnABJlea9YvQS7G3mZBDxd6NbIRkeNop2o4yEPCSk07UD8dxKeL+v\nM2BPEMCcMb7tB+vfIPTmgn7dpl0nUh0vXEA4Jr8ltVnL4gwXJ22McHo0vaZtMwPi\npGLYW41Txq5WPLh1aFniTthO65qgbbnK6AWqKZGc0WwSkCOWFUTv4Z7pngzf8jD1\nE0tydQjGyKFoPtTGnS5PoiOrjYP1+Xds7wR+cjnz0MUBJhrsmR579LDzvqUeL13r\ncgk1FaSHAgMBAAECggEAENliP68GtbQE83BQD8RPtWzbuIxuR3UAybz/mTf3UBVO\nPEZAUjpIoZV1tLRphtgTX6wkOSUhKFSpQpt9khhuVKclyCtzol3l9seiQPTM49C5\nvj4VfpkpYUgyvprD+5i91QKgZ4VyQ7k0fufzD41ljXQpgpiDwArdEnTzDxeeegNR\nM/YFbSD56DCE6phzu/yAqLdC2lGQMqtc3kxQSzEy42bWgYfAI++1AgZ/fnrKQdZK\nZH8RoFYEP/5pCFaHK1QLSjOL16rOQjy4aDzwEL7e4iFARV3CdpKFxSDJYDKyxM/2\np/Avh6driHliZJOr2fTz/C+1+eR+cHN/4DAxVLw1oQKBgQDwUi8i48IfE7Ibw77X\nxcly3inZi54fwAT59RbsmDzDelVeKlGMVQekJeKmD29KuROJVChIamiKLJXwzqDi\nMTE+SS3t2znarnmFC16xVE5QVvWYwtq6PgVbCZJ6CU/aVPg0SIU0wK2cc/el4wFT\noYn/noK+GhkcuqNmMZqXr/xKKQKBgQDi/pwzNQ1t61wDFv0/XLfCgAouXZ3ezDnR\nubicHdxKKmBS0jE9iAe9dLc2QCnGVpP6YSM6dmj3VTny4ScakkfJesq177rzAZoi\nVL35LrQ5uKLMPyC6YZ2jRby91v+Q88QhD1ObYiFVR3waxbYY7F2SzdljTuc4gkcV\n4F8f3MKvLwKBgCpGuuYPXRHsfBOoTsVUlQixDnmntwxs0jNKq1q5uU7GEYh8N1ZR\niwOUape99V0Wy9oHxQJgPb249DOlleXUs436f6rtOvM+aEBAbMsTQqeddJ0IAkRr\nLrQCLhNr2fFVq0g/TbenAaOZPwKeuZgFveoK74MTwkEskBwlM8XlfqNpAoGAcZ+r\nRoKm3z+xxiYqzB24Khb3gbAAxzaJNq71dsgHreQ6ZRqr5TYDUdVrpC9H+ez6k5ku\nDiSZdDzoDeigL0/LuVHKyHlgpiVGJysuEN5M/puqefybgFA+nSzaRlipgsBSi43l\nduEO+GYY/Dm9Zgpi6Io759bmLMYhmRS/6O4TUacCgYAgBtmKJ8fzQifWMH60totq\nahULU+YB4nj68OmcyEYIM4ujwYyG6iL9ko7tPm0jR0Dkce9GRUBkolm8bIX7U+Lc\np2m8LvXBzWnErl7dr/BeWMBnXbDgHgyL9lAfXFZFQAj+RrpE8Gr3P64DbrMtux5h\n2BinyKF1ONCPOYHF8stdsA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "gee-marinanaomi@gee-project-238412.iam.gserviceaccount.com",
+  "client_id": "103828321110255002973",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/gee-marinanaomi%40gee-project-238412.iam.gserviceaccount.com"
+}

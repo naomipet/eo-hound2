@@ -1,0 +1,99 @@
+{{> header }}
+    <div class="containerBox">
+        <div class="row mb-4">
+            <div class="col-8">
+                <h4 class="titleStat">What is EO-Hound?</h4>
+                <p class="txt">
+                    <strong>EO-Hound</strong> is a user-friendly web application to query catalogues and generate summary statistics about 
+                    satellite imagery availability and quality, bound to an user-selected area of interest.
+                </p>
+                <h4 class="titleStat">Why EO-Hound?</h4>
+                <p class="txt">
+                    The availability of open satellite imagery has grown rapidly in the last years, and so are the number of
+                    studies and applications employing thereof for different purposes. Nevertheless, choosing suitable dataset
+                    for a remote sensing project often results in a tedious and time-consuming operation. In view of the above,
+                    having access to complete and user-friendly tools -dedicated to data overview as well as metadata
+                    harvesting- is key to facilitate this task. Emerging technologies -such as the distributed computing- pose a
+                    terrific opportunity for tackling any satellite data planning issue. Among the cutting-edge solutions, the
+                    Google Earth Engine (GEE) represents a reference in terms of capabilities and usability for satellite imagery
+                    operations. GEE is a cloud-based geospatial processing platform that provides catalogues of open satellite
+                    imagery, and a set of algorithms that can be used directly on these data. 
+                    </br>
+                    </br>
+                    Until now <strong>two different dataset</strong> can be queried:
+                    <ul class="txt">
+                        <li><strong>Sentinel-2</strong></li>
+                        <li><strong>Landsat8</strong></li>
+                    </ul>
+                </p>
+            </div>
+            <div class="col-4">
+                <img id="logoBig" src="/static/LogoCol.png" alt="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <h4 class="titleStat">Let's Start Exploring the Catalogues!</h4>
+            </div>
+        </div>
+        <div class="row my-4">
+            <div class="col-4">
+                <img id="logoBig" src="/static/images/QueryTable.png" alt="">
+            </div>
+            <div class="col-8 align-self-center pl-5">
+                <ol type="1" class="txt">
+                    <li><strong>Choose collection:</strong>
+                        <br>
+                        Landsat8, Sentinel-2 level 1C and Sentinel-2 level 2A are the available collections
+                    </li>
+                    <li><strong>Insert Sensing Period:</strong>
+                        <br>
+                        Filtering the image collection by selecting the start and end date
+                    </li>
+                    <li><strong>Import Area of Interest:</strong>  
+                        <br>
+                        This Bounding Box can be of any shape.
+                        <br> 
+                        Upload the GeoJson with WGS84 Reference System.
+                    </li>
+                    <li><strong>Load the satellite image:</strong>  
+                        <br>
+                        If tick it will render it on the map. 
+                    </li>
+                    <li><strong>Cloud Filter:</strong>  
+                        <br>
+                        Sort by a cloud cover property. Admissible values from 1 to 100. Selecting the value 100 takes all the images in the collection. 
+                    </li>
+                    <li><strong>Run:</strong>  
+                        <br>
+                        Start the query!
+                    </li>
+                </ol>         
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <h4 class="titleStat">Results</h4> 
+            </div>
+        </div>   
+        <div class="row my-4"> 
+            <div class="col-4 align-self-center pl-5">  
+                <p class="txt">
+                    Selection of a specific tile for displaying its metadata and statistical information.
+                    The amount of surface overlapped to the area of ​​interest is shown in percentage.
+                </p>
+            </div>
+            <div class="col-8 mb-4 d-flex justify-content-center">
+                <video width="700" height="400" controls>
+                    <source src="/static/images/TilesSelection.mp4" type="video/mp4">
+                </video>
+            </div> 
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="http://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+{{> footer }}

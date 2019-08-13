@@ -1,0 +1,226 @@
+{{> header }}
+    <div class="containerBox">
+        <div class="row">
+            <div class="col-8">
+                <h4 class="titleStat">Statistics for Tile <strong>{{name}}</strong></h4>
+            </div>
+            <div class="col-4 ">
+                <a id="downloadLink" class="btn btn-primary downloadButton" role="button" aria-pressed="true" ><i class="fas fa-file-download"></i></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                {{!-- Number of Images --}}
+                <div id="images" class="square">
+                    <div class="row rowDimension">
+                        <div class="col-4">
+                            <i class="fas fa-camera-retro iconBig"></i>
+                        </div>
+                        <div class="col-8">
+                            <div class="resultSquare">
+                                <p>{{numOfImages}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <h4 class="titleSquare">Number of Images</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                {{!-- Orbit Direction --}}
+                <div id="areaOfInt" class="square">
+                    <div class="row rowDimension">
+                        <div class="col-4">
+                            <i class="fas fa-draw-polygon iconBig"></i>
+                        </div>
+                        <div class="col-8">
+                            <div class="resultSquare">
+                                <p>{{orbitDirection}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <h4 class="titleSquare">Orbit Direction</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                {{!-- Available Dates --}}
+                <div id="cloud" class="square">
+                    <div class="row rowDimension">
+                        <div class="col-4">
+                            <i class="fas fa-cloud iconBig"></i>
+                        </div>
+                        <div class="col-8">
+                            <div class="resultSquare">
+                                <p>From: {{start}}
+                                <br>
+                                To: {{end}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <h4 class="titleSquare">Available Dates</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                {{!-- Revisiting Time --}}
+                <div id="revTime" class="square">
+                    <div class="row rowDimension">
+                        <div class="col-4">
+                            <i class="fas fa-satellite iconBig"></i>
+                        </div>
+                        <div class="col-8">
+                            <div class="resultSquare">
+                                <p>{{revisitTime}} Day</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <h4 class="titleSquare">Revisiting Time</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row my-5">
+            <div class="col-12">
+                <div id="containerChart">
+                    <canvas id="CloudChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="row my-5">
+            <div class="col-12">
+                <div id="containerChart">
+                    <canvas id="ImageChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var downloadLink = document.getElementById("downloadLink")
+        //allow to download the txt pressing the button
+        var list = '{{downloadNames}}';
+        list = list.replace(/"/g, '').replace(/,/g, "\n")
+        downloadLink.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(list))
+        downloadLink.setAttribute('download', 'Tile_{{name}}.txt')
+        var ctx = document.getElementById('CloudChart').getContext('2d')
+        var labelsStr = '{{labels}}'
+        var dataStr = '{{dataCloud}}'
+        var labels = labelsStr.split(',')
+        var data = dataStr.split(',')
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'bar',
+            // The data for our dataset
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Cloud Coverage',
+                    backgroundColor: 'rgba(244,160,0,0.3)',
+                    borderColor: 'rgb(244, 160, 0)',
+                    data: data
+                }]
+            },
+            // Configuration options go here
+            options: {
+                maintainAspectRatio: false,
+                    responsive: true,
+                    legend: {
+                        display: false
+                    },
+                    hover: {
+                        mode: 'label'
+                    },
+                    scales: {
+                        xAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Time'
+                            }
+                        }],
+                        yAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Cloud Cover %'
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    title: {
+                        display: true,
+                        text: 'Cloud Cover Over Time'
+                    }
+            }
+        });
+
+        var imgChart = document.getElementById('ImageChart').getContext('2d');
+        var labelsStrCount = '{{labels}}'
+        var dataStrCount = '{{dataCount}}'
+        var labelsCount = labelsStrCount.split(',')
+        var dataCountPlot = dataStrCount.split(',')
+        var chart = new Chart(imgChart, {
+        // The type of chart we want to create
+        type: 'bar',
+        // The data for our dataset
+        data: {
+            labels: labelsCount,
+            datasets: [{
+                label: 'Number of Image in time',
+                backgroundColor: 'rgba(219,68,55,0.3)',
+                borderColor: 'rgb(219, 68, 55)',
+                data: dataCountPlot
+            }]
+        },
+        // Configuration options go here
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            legend: {
+                display: false
+            },
+            hover: {
+                mode: 'label'
+            },
+            scales: {
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Time'
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Number of Images'
+                    },
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
+            title: {
+                display: true,
+                text: 'Images Over Time'
+            }
+        }
+    });
+</script>
+{{> footer }}

@@ -1,0 +1,303 @@
+html, body {
+    background: #ffffff;
+    color: #333333;
+    height: 100%;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+    min-width: 1200px;
+}
+
+.bg-steel {
+    background-color: rgb(47, 91, 183);
+    width: 100%;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+    color: #ffffff;
+}
+
+#logo {
+    width: 65px;
+    height: 50px;
+}
+
+#info {
+    width: 100%;
+    height:100px;
+
+}
+
+#map {
+    width: 100%;
+    height:100%;
+}
+
+#drop-container {
+  display: none;
+  height: 450px;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(100, 100, 100, 0.5);
+}
+
+#drop-silhouette {
+  color: white;
+  border: white dashed 8px;
+  height: calc(450px - 15px);
+  width: calc(100% - 15px);
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAAXNSR0IArs4c6QAAAAZiS0dEAGQAZABkkPCsTwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90LHAIvICWdsKwAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAACdklEQVR42u3csU7icBzA8Xp3GBMSeRITH8JHMY7cRMvmVmXoE9TAcJubhjD4ApoiopgqDMWAKAgIcSAiCfxuwhwROVJbkPD9rP23ob8vpZCQKgoAAAAAAAAAAPDYyiK/eNM05bNtr6+vSjgcXiHxDMkE1WpVFvGcfpCVICAIQUAQgoAgBAFBCAKCgCAEAUEIAoIQBAQhCAgCghAEBCEICEIQEIQgIAgIQhAQhCAgCEFAEIKAICAIQUAQgoAgBAFBCDIzhmFINBo9/K6D0XVddnd3ZaneDY7jSCqVcn3SfjyeKRKJbJ2dnYllWbKUl2i5XJaXlxdJJBIy7yDHx8fy9vYm6XR6OWMM3d/fi4hIqVSSWCwmsw5ycHAgrVZLRETOz8+XO8ZQpVJ5H2Y6nRZN0/b9DqLruhSLxfd9MpkMMT6L0uv1JJlMih9BhveJwWDwvv7i4oIY4zw8PIwMtt1uSzweF6+CHB0dSbfbHVmbzWaJMcnj4+OHAd/d3cne3p64DWKapjw/P39Yd3l5SYxpVKvVsYO2LEtUVd2ZNoiu6+I4ztg1V1dXxPAiSq/Xk5OTk0k9pNVqyenp6ch94l+5XI4YbtRqNfHa9fX1t43xcwGa/Nnc3PwdDAY9OZht28rGxgZPvP6KSCSy9fT09OUrw7ZtPqa8jFKv113HuLm5IYbXVFXdcRPl9vaWGH5GaTQaU8fI5/PE8JumafvNZvO/MQqFAjFmJRqNHk6Ksqgx5vr1zzAM2d7edr3/6uqqsra2NnZbp9NR+v2+62OHQqG5zObXPIMEAgFlfX3dl2N79btl1viTA0FAEIKAIAQBAAAAAAAAsMz+Ai1bUgo6ebm8AAAAAElFTkSuQmCC');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+input[type=checkbox] {
+    transform: scale(2);
+    background-color: #ffffff;
+
+}
+
+.checkboxPosition {
+    margin-left: 9px
+}
+
+.marginSet {
+    margin-top: 0.5px
+}
+
+#form {
+    width: 400px;
+    height: auto;
+    background-color: rgba(255,255,255,0.9);
+    margin-top: 5px;
+    margin-left: 10px;
+    float: left;
+    border-radius: 5px;
+}
+
+#formClose {
+    width: 40px;
+    height: auto;
+    background-color: rgb(255,255,255);
+    margin-top: 10px;
+    margin-left: 10px;
+    float: left;
+    border-radius: 5px;
+    text-align: center;
+    display: none;
+}
+
+#openTab {
+    font-size: x-large;
+}
+
+#openTab:hover {
+    width: 50px;
+    font-size: x-large;
+    color: rgb(47, 91, 183);
+}
+
+#formTitle {
+    font-weight: 700;
+    margin-top: 15px;
+    text-align: center;
+    color: rgb(47, 91, 183);
+}
+
+label {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+hr.style14 {
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+}
+
+.inputDisp {
+    width: 175px;
+    display: inline-block;
+}
+
+#closeTab {
+    float: right;
+    margin-top: 10px;
+    width: 50px;
+    font-size: large;
+}
+
+#closeTab:hover {
+    float: right;
+    margin-top: 10px;
+    width: 50px;
+    font-size: large;
+    color: rgb(47, 91, 183);
+}
+
+i.far.fa-times-circle {
+    float: right;
+}
+
+.fa-spinner {
+    margin-right: 2.5%;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#geometry {
+    display: none;
+}
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+
+}
+
+/* The slider itself */
+.slider {
+  width: 89%; /* Full-width */
+  height: 25px; /* Specified height */
+  background: rgb(47, 91, 183); /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+  vertical-align: bottom;
+  margin-bottom: 3px;
+}
+
+#sliderValue {
+  width: 8%;
+  height: 25px;
+  font-size: 15px;
+  font-weight: 700;
+  margin-left: 3px;
+}
+
+#buttonColor {
+    background-color: rgb(47, 91, 183);
+    border: 0;
+}
+
+#containerStatGen {
+    display: none;
+    width: 400px;
+    height: 350px;
+    margin-right: 55px;
+    background-color: rgba(255,255,255,0.9);
+    border-radius: 5px;
+}
+
+.dropdownPosition {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.fa-file {
+    font-size: 20px;
+    font-weight: 900;
+    margin-top: 4px;
+}
+
+#formTitleStat {
+    font-weight: 700;
+    text-align: center;
+    color: rgb(47, 91, 183);
+}
+
+.downloadButton {
+    float: right;
+    width: 40px;
+    padding: 6px;
+    background-color: rgb(47, 91, 183);
+    border: 0;
+}
+
+.squareSmall {
+    width: 100%;
+    height: 110px;
+    margin-bottom: 7%;
+    padding: 7px;
+    border-radius: 5px;
+    color: #ffffff;
+    transition: transform .2s;
+}
+
+.squareSmall:hover {
+    transform: scale(1.1);
+}
+
+#images {
+    background-color: rgb(66, 133, 244)
+}
+
+#areaOfInt {
+    background-color: rgb(219, 68, 55)
+}
+
+#cloud {
+    background-color: rgb(244, 160, 0)
+}
+
+#revTime {
+    background-color: rgb(15, 157, 88)
+}
+
+.iconSmall {
+    font-size: 30px;
+    margin-left: 7px;
+    margin-top: 7px
+}
+
+.resultSquareSmall  {
+    margin-top: 13px;
+    font-size: 17px;
+    float: left;
+}
+
+.titleSquareSmall {
+    color: #ffffff;
+    padding-left: 10px;
+    margin-top: 7px;
+    font-size: 17px;
+    line-height: 18px
+}
+
+#chartBoxSmall {
+    width: 100%;
+    height: 155px;
+}
+
+.txt {
+    line-height: 1.5rem;
+    text-align: justify;
+    font-size: 1.1rem;
+}
+
+#logoBig {
+    width: 100%;
+    height: auto;
+}
+
+
+.titleError {
+    font-size: 2rem;
+    color: rgb(47, 91, 183);
+}
+
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+    padding-right: 7px;
+}

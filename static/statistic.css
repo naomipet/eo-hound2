@@ -1,0 +1,49 @@
+.containerBox {
+    width: 100%;
+    padding: 2%;
+}
+
+.titleStat {
+    line-height: 30px;
+    color: rgb(47, 91, 183);  
+}
+
+.square {
+    min-width: 265px;
+    width: 100%;
+    height: 200px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    color: #ffffff;
+    transition: transform .2s;
+}
+
+.square:hover {
+    transform: scale(1.1);
+}
+
+.rowDimension {
+    height: 107px;
+}
+
+.iconBig {
+    font-size: 70px;
+}
+
+.resultSquare  {
+    padding-left: 5px;
+    margin-top: 20px;
+    font-size: 1.3rem
+}
+
+.titleSquare {
+    margin-top: 13px;
+    color: #ffffff;
+}
+
+#containerChart {
+    width: 100%;
+    height: 400px;
+}

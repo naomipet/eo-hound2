@@ -1,0 +1,326 @@
+{{> header }}
+  <!-- form -->
+  <div id="formClose">
+    <span id="openTab">
+      <i class="fas fa-sliders-h"></i>
+    </span>
+  </div>
+  <div id="form" class="container">
+    <div class="row">
+      <div class="col-lg">
+        <span id="closeTab">
+          <i class="far fa-times-circle"></i>
+        </span>
+        <h3 id="formTitle">Insert Search Criteria</h3>
+        <hr class="style14">
+        <div>
+          <form action="/filter" method="GET" enctype="multipart/form-data" id="myForm">
+              <label for="collection">Select your collection: </label>
+              <div class="form-group">
+                  <select class="form-control" name="imageCollection">
+                    <option value="Sentinel1C">Sentinel 1C</option>
+                    <option value="Sentinel2A">Sentinel 2A</option>
+                    <option value="Landsat">Landsat</option>
+                  </select>
+              </div>
+              <label for="dateStart dateEnd ">Sensing period: </label>
+              <div class="form-group">
+                  <input class="form-control inputDisp" type="date" name="dateStart" placeholder="Start date" required>
+                  <input class="form-control inputDisp float-right" type="date" name="dateEnd" placeholder="End date" required>
+              </div>
+              <label for="jsonBbox">Input bounding box: </label>
+              <div class="form-group">
+                  <input class="form-control" type="file" name="jsonBbox" id="bbox" placeholder="GeoJson" accept=".geojson" required>
+              </div>
+              <div class="form-check checkboxPosition">
+                <input type="checkbox" name="showImage" class="form-check-input" id="loadImage" checked="checked" value="true"/>
+                <label class="form-check-label marginSet" for="loadImage">Load Sample Image</label>
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="text" name="coordinates" id="geometry">
+              </div>
+              <label for="cloudFilter">Max cloud cover: </label>
+              <div class="form-group">
+                <div class="slidecontainer">
+                  <input type="range" min="1" max="100" value="100" class="slider" name="cloudFilter" id="cloudSlider">
+                  <output id="sliderValue">100% <output>
+                </div>
+              </div>
+              <div class="form-group">
+                <button id="buttonColor" type="button" class="btn btn-lg btn-primary btn-block"><i class="fas fa-spinner"></i>Run</button>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- General statistic container -->
+  <div id="containerStatGen" class="container">
+    <div class="row">
+      <div class="col-6 mt-3">
+        <div class="btn-group mb-2">
+          <button id="buttonColor" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+            Choose Tile <span class="caret"></span>
+          </button>
+          <ul id="granuleName" class="dropdown-menu scrollable-menu" role="menu" onmouseout=highlightGranule()>
+          </ul>
+        </div>
+      </div>
+      <div class="col-6 mt-3">
+          <a id="downloadLink" class="btn btn-primary downloadButton" role="button" aria-pressed="true" ><i class="fas fa-file-download"></i></a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <h3 id="formTitleStat">General Statistics</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        {{!-- number of images --}}
+        <div id="images" class="squareSmall">
+          <div class="row">
+            <div class="col-4">
+              <i class="fas fa-camera-retro iconSmall"></i>
+            </div>
+            <div class="col-8">
+              <div id="imageNumber" class="resultSquareSmall">
+                <p></p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <h4 class="titleSquareSmall">Number of Images</h4>
+            </div>
+          </div>
+        </div>
+        {{!-- clouds --}}
+        <div id="cloud" class="squareSmall">
+          <div class="row">
+            <div class="col-4">
+              <i class="fas fa-cloud iconSmall"></i>
+            </div>
+            <div class="col-8">
+              <div id="avgCloud" class="resultSquareSmall">
+                <p></p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <h4 class="titleSquareSmall">Average Cloud Cover</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        {{!-- Area of Interest --}}
+        <div id="areaOfInt" class="squareSmall">
+          <div class="row">
+            <div class="col-4">
+              <i class="fas fa-draw-polygon iconSmall"></i>
+            </div>
+            <div class="col-8">
+              <div id="area" class="resultSquareSmall">
+              <p></p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <h4 class="titleSquareSmall">Buonding Box Area</h4>
+            </div>
+          </div>
+        </div>
+        {{!-- Number of Granules --}}
+        <div id="revTime" class="squareSmall">
+          <div class="row">
+            <div class="col-4">
+              <i class="fab fa-buffer iconSmall"></i>
+            </div>
+            <div class="col-8">
+              <div id="numOfGranules" class="resultSquareSmall">
+                <p></p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <h4 class="titleSquareSmall">Number of Tiles</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- The element into which we render the Google Map. -->
+  <div id="map"></div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="http://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!-- Load our JavaScript file. -->
+  <script src="/static/script.js"></script>
+  <script>
+    var divClose = document.getElementById("form")
+    var divOpen = document.getElementById("formClose")
+    var icnLoad = document.getElementsByClassName("fa-spinner")
+    var runButton = document.getElementById("buttonColor")
+    var divStatistic = document.getElementById("containerStatGen")
+    var form = document.getElementById("myForm")
+    var errorDate = document.getElementById("errorDate")
+    var downloadLink = document.getElementById("downloadLink")
+    var cloudSlider = document.getElementById("cloudSlider")
+    var sliderValue = document.getElementById("sliderValue")
+    $(icnLoad).hide()
+    sliderValue.innerHTML = cloudSlider.value + "%" // Display the default slider value
+    cloudSlider.oninput = function() {
+      sliderValue.innerHTML = cloudSlider.value + "%"
+    }
+    $("#closeTab").click(function(){
+      $(divClose).fadeToggle()
+      $(divOpen).fadeToggle()
+    })
+    $("#openTab").click(function(){
+      $(divOpen).fadeToggle()
+      $(divClose).fadeToggle()
+    })
+    $(runButton).click(function(clickEvent){
+      //check if the form is filles than show the loader
+      var missingFieldCounter = 0 // we count the number of field missing
+      $(':input[required]').each(function() // for each input that contains "required" attribute
+      {
+          if($(this).val() == "") // if the required input is not filled
+          {
+              missingFieldCounter+=1;
+          }
+      })
+      if(missingFieldCounter == 0) // if the counter has never been incremented (every field is filled)
+      {
+        //extract from the form the date values
+          var date1 = new Date($('input[name="dateStart"]').val())
+          var date2 = new Date($('input[name="dateEnd"]').val())
+          var diffTime = date2.getTime() - date1.getTime();
+        //if the difference is positive run
+          if(diffTime >= 0) {
+            $(icnLoad).show()
+            //manually create event, oterwise addEventListener doesn't trigger
+            const domEvent = document.createEvent('Event')
+            domEvent.initEvent('submit', false, true)
+            clickEvent.target.closest('form').dispatchEvent(domEvent)
+          } else {
+            alert("Date interval not valid!")
+            //$(errorDate).show()
+          }
+      } else {
+        alert("Please, fill all the fields!")
+      }
+    })
+    var params = ''
+    var granulesAscending, granulesDescending
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      $(divStatistic).fadeOut()
+      runButton.disabled = true;
+      clearImageSample()
+      ClearGranules()
+      $.ajax({
+        url: '/filter',
+        dataType : 'json', // Try text also, maybe the api donn't send result in json. Text always work.
+        data: $(form).serialize(), // The form to send.
+        success : function (response) {// Get response on successful sever connection.
+          var error = response['error']
+          var count = response['count']
+          if(error != undefined){
+            alert(error)
+          }
+          else if(count == '0')
+          {
+            alert("no images for the specified query")
+          }
+          else{
+            granulesDescending = response['granulesDescending']
+            granulesAscending = response['granulesAscending']
+            //path for downloading the file
+            var userFileName = response['fileName']
+            var areas = granulesDescending.features.map(function(d) { return d.properties.areaPrecent.toFixed(2)})
+            if(!isEmpty(granulesAscending)){
+              areas.concat(granulesAscending.features.map(function(d) { return d.properties.areaPrecent}))
+            }
+            var areaKm2 = parseFloat(response['aream2'])/1000000
+            areaKm2 = areaKm2.toExponential(2)
+            var names = JSON.stringify(response['names']).replace(/"/g, '').replace(/\[|\]/g, '').split(',')
+            var cloudsAvg = JSON.stringify(response['cloudsAvg']).replace(/"/g, '')
+            var minDate = JSON.stringify(response['minDate'])
+            var maxDate = JSON.stringify(response['maxDate'])
+            var downloadNames = JSON.stringify(response['downloadNames']).replace(/"/g, '').replace(/\[|\]/g, '').replace(/,/g, "\n");
+            if(response['mapid'] != undefined){
+              ids = JSON.stringify(response['mapid'])
+              tokens = JSON.stringify(response['token'])
+              addLayers(ids, tokens)
+            }
+            addGranulesToMap(granulesAscending)
+            addGranulesToMap(granulesDescending)
+            params = $(form).serialize()
+            //show general statistic
+            $(divStatistic).fadeIn()
+            //push values in the statistic
+            $("#granuleName").html("")
+            names.forEach(function(element, index) {
+              var txt="<li><a class='dropdown-item' onclick=openGranuleStat('"+element+"') onmouseover=highlightGranule('"+element+"')>" + element + ": covering "+ areas[index]+"% of bbox</a></li>"
+              $("#granuleName").append(txt)
+            })
+            //allow to download the txt pressing the button
+            downloadLink.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(downloadNames))
+            downloadLink.setAttribute('download', 'tiles.txt')
+            $("#imageNumber").html("<p>" + count + "</p>")
+            $("#avgCloud").html("<p>" + cloudsAvg + "%</p>")
+            $("#numOfGranules").html("<p>" + names.length + "</p>")
+            $("#area").html("<p>" + areaKm2 + "km<sup>2</sup></p>")
+          }
+          $(icnLoad).hide()
+          runButton.disabled = false
+          }, error: function (err) { // Get error on failed connection to server.
+            $(icnLoad).hide()
+            alert("server error")
+            runButton.disabled = false;
+          }
+      })
+    });
+    document.getElementById('bbox').onchange = function(e) {
+      readFile(e.srcElement.files[0]);
+    }
+    function openGranuleStat(name){
+      window.open("/granule?name=" + name + "&" + params);
+    }
+    function highlightGranule(name)
+    {
+      ClearGranules();
+      addGranulesToMap(granulesAscending, name)
+      addGranulesToMap(granulesDescending, name)
+    }
+    function readFile(file) {
+      clearImageSample()
+      var reader = new FileReader()
+      reader.onload = readSuccess
+      function readSuccess(evt) {
+        var geojson = loadGeoJsonString(evt.target.result);
+        var geometry = geojson.features[0].geometry.coordinates.toString()
+        document.getElementById("geometry").value = geometry;
+      }
+      reader.readAsText(file)
+    }
+    //Create a callback to boot our application.
+    var initMap = function() {
+      // The values of mapid and token for the map tiles, generated by Earth
+      // Engine using the Node.js script server.js, are injected here using
+      // the Handlebars templating engine.
+      initialize()
+    }
+  </script>
+  <!-- Load the Google Maps API, and run the initMap() callback when finished. -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAE_3AO7GubgGCKKFU-1JhgiDJV_OEXEmQ&callback=initMap"
+          async defer></script>
+{{> footer }}
